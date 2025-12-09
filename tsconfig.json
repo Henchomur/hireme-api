@@ -12,7 +12,7 @@
     "module": "nodenext",
     // "moduleResolution": "nodenext",
     "target": "esnext",
-    "types": ["node"],
+    "types": ["node", "express", "cors", "jsonwebtoken", "multer"],
     // For nodejs:
     // "lib": ["esnext"],
     // "types": ["node"],
