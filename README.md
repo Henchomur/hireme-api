@@ -138,11 +138,21 @@ Since real payment gateway integration requires verified merchant accounts, this
 
 ## 📂 Entity Relationship Diagram (ERD)
 
-*(Place your ERD image in the repo and link it here, or use the description below)*
+The system consists of three main entities: **USER**, **JOB**, and **APPLICATION**.  
 
-  * **Users** have roles (Admin, Employee, Job Seeker).
-  * **Employees** create **Jobs** (One-to-Many).
-  * **Job Seekers** create **Applications** linked to **Jobs** (Many-to-Many via Application entity).
+- **USER**: Represents Admins, Employees (Recruiters), and Job Seekers.  
+- **JOB**: Represents jobs posted by Employees (Recruiters).  
+- **APPLICATION**: Represents job applications submitted by Job Seekers, including resume uploads and payment details.
+
+### Relationships
+
+- **USER → JOB**: One-to-Many (a Recruiter can post multiple jobs).  
+- **USER → APPLICATION**: One-to-Many (a Job Seeker can submit multiple applications).  
+- **JOB → APPLICATION**: One-to-Many (a job can receive multiple applications).
+
+### ERD Image
+
+![ERD](docs/erd-dark.png)
 
 -----
 
