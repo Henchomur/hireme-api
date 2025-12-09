@@ -15,6 +15,23 @@ export const getAllUsers = async (req: Request, res: Response) => {
   }
 };
 
+// @desc    Get All Jobs
+// @route   GET /api/admin/jobs
+// @access  Admin
+export const getAllJobs = async (req: Request, res: Response) => {
+  try {
+    const { company } = req.query;
+    const filter: any = {};
+    if (company) {
+      filter.companyName = { $regex: company, $options: "i" };
+    }
+    const jobs = await Job.find(filter).populate("recruiterId", "name email");
+    res.json({ status: "success", count: jobs.length, data: jobs });
+  } catch (error) {
+    res.status(500).json({ message: "Server Error", error });
+  }
+};
+
 // @desc    Delete a user (and their data)
 // @route   DELETE /api/admin/users/:id
 // @access  Admin
@@ -51,12 +68,18 @@ export const getSystemStats = async (req: Request, res: Response) => {
   }
 };
 
-// @desc    Get All Applications (System Wide)
+// @desc    Get All Applications
 // @route   GET /api/admin/applications
 // @access  Admin
 export const getAllApplications = async (req: Request, res: Response) => {
   try {
-    const applications = await Application.find()
+    const { status } = req.query;
+    const filter: any = {};
+    if (status) {
+      filter.status = status;
+    }
+
+    const applications = await Application.find(filter)
       .populate("applicantId", "name email")
       .populate("jobId", "title companyName")
       .sort({ createdAt: -1 });
