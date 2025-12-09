@@ -30,7 +30,7 @@ A robust backend system for **HireMe**, a job portal where companies can post jo
 ### 1\. Clone the repository
 
 ```bash
-git clone https://github.com/Sani-Mohibur/hireme-backend.git
+git clone https://github.com/Sani-Mohibur/hireme-api.git
 cd hireme-backend
 ```
 
