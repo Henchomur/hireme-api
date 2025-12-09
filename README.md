@@ -78,6 +78,14 @@ npm start
 
 -----
 
+## 🌐 Live Demo
+
+Check out the backend live demo deployed on Render:
+
+[https://hireme-backend-t817.onrender.com/](https://hireme-backend-t817.onrender.com/)
+
+---
+
 ## 📖 API Documentation
 
 ### 🟢 Authentication
