@@ -172,4 +172,4 @@ You can verify all endpoints using the published Postman Documentation.
 2.  Open the Postman link above.
 3.  **Register** users with different roles (`ADMIN`, `EMPLOYEE`, `JOB_SEEKER`) to test the specific permissions for each route.
    
-***Note:** When testing the **Apply for Job** endpoint as a *Seeker*, the system will automatically simulate a successful payment and generate a transaction ID.*
+***Note:** When testing the **Apply for Job** endpoint as a **Job Seeker**, the system will automatically simulate a successful payment and generate a transaction ID.*
